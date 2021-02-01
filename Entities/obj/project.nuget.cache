@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "V3Y/y1fO4apcZuVxZzDdTHpBDAoC2R0RzDZM5ywoRU0ygzMkV07lVieeRPzIEwS2iBJa4SAmbFIsmKSDwuYHCA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Atum\\Source\\Repos\\ReCapProject\\Entities\\Entities.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Atum\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Atum\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "KCLrtpRjK3aEPC1wbSbGjivrIeHoXkxGfZzi7VgGz6b5qyc90dLia1q0g+sxj5PorZfJytH8Fg9Z0kEm3EbS8A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Atum\\Source\\Repos\\ReCapProject\\DataAccess\\DataAccess.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Atum\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Atum\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
