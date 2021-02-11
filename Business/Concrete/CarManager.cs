@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -17,67 +19,74 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
-            if (car.DailyPrice>0 && car.CarName.Length >= 2)
+            if (car.DailyPrice>0 && car.CarName.Length < 2)
             {
+
+                return new ErrorResult("Araba ismi min 2 karakterden oluşmalıdır.");
+                
+            }
                 _carDal.Add(car);
-                Console.WriteLine("Tebrikler Araba başarıyla eklendi");
-            }
-            else
-            {
-                Console.WriteLine("Araba ismi 2 harften daha büyük ve günlük kullanım bedeli 0 dan büyük olmalıdır.");
-            }
+            return new SuccessResult(Messages.CarAdded);
+
+           
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            Console.WriteLine("Araba silme işleminiz gerçekleşmiştir.");
+            return new SuccessResult("Araba silme işleminiz gerçekleşmiştir.");
         }
 
-        public List<Car> GetAll()
+        public IDataResult <List<Car>> GetAll()
         {
-            return _carDal.GetAll();
-        }
-
-        public List<Car> GetAllByBrandId(int id)
-        {
-            return _carDal.GetAll(p => p.BrandId == id);
-        }
-
-        public List<Car> GetAllByColorId(int id)
-        {
-            return _carDal.GetAll(p => p.ColorId == id);
-        }
-
-        public List<Car> GetByDailyPrice(decimal min, decimal max)
-        {
-            return _carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max);
-        }
-
-        public Car GetById(int id)
-        {
-            return _carDal.Get(p => p.CarId == id);
-        }
-
-        public List<Car> GetByModelYear(int year)
-        {
-            return _carDal.GetAll(p => p.ModelYear==year);
-        }
-
-        public List<CarRentDetailDto> GetCarDetails()
-        {
-            return _carDal.GetCarDetails();
-        }
-
-        public void Update(Car car)
-        {
-            if (car.DailyPrice>0 && car.CarName.Length>=2)
+            if (DateTime.Now.Hour==23)
             {
-                _carDal.Update(car);
-                Console.WriteLine("Araba profili güncellenmiştir.");
+                return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }
+            return new SuccesDataResult<List<Car>>(_carDal.GetAll(), Messages.CarAdded);
+        }
+
+        public IDataResult<List<Car>> GetAllByBrandId(int id)
+        {
+            return new SuccesDataResult<List<Car>> (_carDal.GetAll(p => p.BrandId == id));
+        }
+
+        public IDataResult<List<Car>> GetAllByColorId(int id)
+        {
+            return new SuccesDataResult<List<Car>>(_carDal.GetAll(p => p.ColorId == id));
+        }
+
+        public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)
+        {
+            return new SuccesDataResult<List<Car>>(_carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max));
+        }
+
+        public IDataResult<Car> GetById(int id)
+        {
+            return new SuccesDataResult<Car>(_carDal.Get(p => p.CarId == id));
+        }
+
+        public IDataResult<List<Car>> GetByModelYear(int year)
+        {
+            return new SuccesDataResult<List<Car>>(_carDal.GetAll(p => p.ModelYear==year));
+        }
+
+        public IDataResult<List<CarRentDetailDto>> GetCarDetails()
+        {
+            return new SuccesDataResult<List<CarRentDetailDto>>(_carDal.GetCarDetails());
+        }
+
+        public IResult Update(Car car)
+        {
+            if (car.DailyPrice<0 && car.CarName.Length<2)
+            {
+                return new ErrorResult("Lütfen arabanın günlük fiyatı 0 'dan büyük ve araba ismini min 2 karakter olacak şekilde tekrar deneyiniz.");
+            }
+                _carDal.Update(car);
+            return new SuccessResult("Araba profili güncellenmiştir.");
+               
         }
 
     }

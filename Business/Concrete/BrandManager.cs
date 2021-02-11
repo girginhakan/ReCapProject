@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -16,46 +17,42 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
-            if (brand.BrandName.Length>=2)
+            if (brand.BrandName.Length<2)
             {
+               return new ErrorResult("Marka ismi 2 harften büyük olmalıdır. Lütfen tekrar deneyiniz.");
+            }
                 _brandDal.Add(brand);
-                Console.WriteLine("Markanız başarıyla eklenmiştir.");
-            }
-            else
-            {
-                Console.WriteLine("Marka ismi 2 harften büyük olmalıdır. Lütfen tekrar deneyiniz.");
-            }
+                return new SuccessResult("Markanız başarıyla eklenmiştir.");
+            
         }
 
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
-            Console.WriteLine("Marka sistemden silinmiştir.");
+            return new SuccessResult ("Marka sistemden silinmiştir.");
         }
 
-        public List<Brand> GetAll()
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brandDal.GetAll();
+            return new SuccesDataResult<List<Brand>>(_brandDal.GetAll());
         }
 
-        public Brand GetById(int id)
+        public IDataResult<Brand> GetById(int id)
         {
-            return _brandDal.Get(p => p.BrandId == id);
+            return new SuccesDataResult<Brand>(_brandDal.Get(p => p.BrandId == id));
         }
 
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
-            if (brand.BrandName.Length > 2)
+            if (brand.BrandName.Length < 2)
             {
+               return new ErrorResult("Lutfen marka ismini en az iki karakter olacak sekilde tekrar deneyiniz.");
+            }
                 _brandDal.Update(brand);
-                Console.WriteLine("Marka sistemde basariyla guncellendi.");
-            }
-            else
-            {
-                Console.WriteLine("Lutfen marka ismini en az iki karakter olacak sekilde tekrar deneyiniz.");
-            }
+            return new SuccessResult("Marka sistemde basariyla guncellendi.");
+
         }
     }
 }
