@@ -45,7 +45,7 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }
-            return new SuccesDataResult<List<Car>>(_carDal.GetAll(), Messages.CarAdded);
+            return new SuccesDataResult<List<Car>>(_carDal.GetAll(), Messages.CarListed);
         }
 
         public IDataResult<List<Car>> GetAllByBrandId(int id)
@@ -73,9 +73,9 @@ namespace Business.Concrete
             return new SuccesDataResult<List<Car>>(_carDal.GetAll(p => p.ModelYear==year));
         }
 
-        public IDataResult<List<CarRentDetailDto>> GetCarDetails()
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return new SuccesDataResult<List<CarRentDetailDto>>(_carDal.GetCarDetails());
+            return new SuccesDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
 
         public IResult Update(Car car)
