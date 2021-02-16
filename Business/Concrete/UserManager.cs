@@ -30,7 +30,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserDeleted);
         }
 
-        public IDataResult<List<User>> GelAll()
+        public IDataResult<List<User>> GetAll()
         {
             return new SuccesDataResult<List<User>>(_userDal.GetAll(), Messages.UserListed);
         }

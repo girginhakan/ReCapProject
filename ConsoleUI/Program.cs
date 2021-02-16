@@ -15,13 +15,15 @@ namespace ConsoleUI
             ColorManager colorManager = new ColorManager(new EfColorDal());
             UserManager userManager = new UserManager(new EfUserDal());
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
 
-
-            //CarAddedTest(carManager);
+            // CarAddedTest(carManager);
             //CarDetailTest(carManager);
+            //UserAddTest(userManager);
+        }
 
+        private static void UserAddTest(UserManager userManager)
+        {
             User userAdd = new User
             {
                 FirstName = "Hakan",
@@ -30,11 +32,19 @@ namespace ConsoleUI
                 Password = "12345"
             };
             userManager.Add(userAdd);
-            userManager.GelAll();
+            var result = userManager.GelAll();
+            foreach (var item in result.Data)
+            {
+                Console.WriteLine(item.LastName);
+            }
         }
 
-
-
+        private static void CarAddedTest(CarManager carManager)
+        {
+            Car carAdd = new Car { CarName = "Toyota", BrandId = 1, ColorId = 2, DailyPrice = 300, ModelYear = 2021, Descriptions = "çok güzeldir." };
+            carManager.Add(carAdd);
+            Console.WriteLine(carAdd.CarName + "/" + carAdd.Descriptions);
+        }
 
         private static void CarDetailTest(CarManager carManager)
         {
@@ -52,11 +62,5 @@ namespace ConsoleUI
             }
         }
 
-        private static void CarAddedTest(CarManager carManager)
-        {
-            Car carAdd = new Car { CarName = "Toyota", BrandId = 1, ColorId = 2, DailyPrice = 300, ModelYear = 2021, Descriptions = "çok güzeldir." };
-            carManager.Add(carAdd);
-            Console.WriteLine(carAdd.CarName + "/" + carAdd.Descriptions);
-        }
     }
 }
