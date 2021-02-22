@@ -4,9 +4,13 @@ using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
+using Core.Aspects.Autofac.Validation;
 
 namespace Business.Concrete
 {
@@ -18,16 +22,10 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
-
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            if (car.DailyPrice>0 && car.CarName.Length < 2)
-            {
-
-                return new ErrorResult("Araba ismi min 2 karakterden oluşmalıdır.");
-                
-            }
-                _carDal.Add(car);
+            _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
 
            
@@ -77,13 +75,10 @@ namespace Business.Concrete
         {
             return new SuccesDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
-
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
-            if (car.DailyPrice<0 && car.CarName.Length<2)
-            {
-                return new ErrorResult("Lütfen arabanın günlük fiyatı 0 'dan büyük ve araba ismini min 2 karakter olacak şekilde tekrar deneyiniz.");
-            }
+            
                 _carDal.Update(car);
             return new SuccessResult("Araba profili güncellenmiştir.");
                

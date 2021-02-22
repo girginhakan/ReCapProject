@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -16,22 +18,19 @@ namespace Business.Concrete
         {
             _brandDal = brandDal;
         }
-
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand brand)
         {
-            if (brand.BrandName.Length<2)
-            {
-               return new ErrorResult("Marka ismi 2 harften büyük olmalıdır. Lütfen tekrar deneyiniz.");
-            }
-                _brandDal.Add(brand);
-                return new SuccessResult("Markanız başarıyla eklenmiştir.");
-            
+
+            _brandDal.Add(brand);
+            return new SuccessResult("Markanız başarıyla eklenmiştir.");
+
         }
 
         public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
-            return new SuccessResult ("Marka sistemden silinmiştir.");
+            return new SuccessResult("Marka sistemden silinmiştir.");
         }
 
         public IDataResult<List<Brand>> GetAll()
@@ -44,13 +43,10 @@ namespace Business.Concrete
             return new SuccesDataResult<Brand>(_brandDal.Get(p => p.BrandId == id));
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Update(Brand brand)
         {
-            if (brand.BrandName.Length < 2)
-            {
-               return new ErrorResult("Lutfen marka ismini en az iki karakter olacak sekilde tekrar deneyiniz.");
-            }
-                _brandDal.Update(brand);
+            _brandDal.Update(brand);
             return new SuccessResult("Marka sistemde basariyla guncellendi.");
 
         }
