@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAPI.Controllers
 {
@@ -51,6 +52,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpGet("getall")]
+   
         public IActionResult GetAll()
         {
             var result = _carService.GetAll();

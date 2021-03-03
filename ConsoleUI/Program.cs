@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
@@ -22,28 +23,28 @@ namespace ConsoleUI
             //UserAddTest(userManager);
         }
 
-        private static void UserAddTest(UserManager userManager)
-        {
-            User userAdd = new User
-            {
-                FirstName = "Hakan",
-                LastName = "Girgin",
-                Email = "hakangirgin7@gmail.com",
-                Password = "12345"
-            };
-            userManager.Add(userAdd);
-            var result = userManager.GelAll();
-            foreach (var item in result.Data)
-            {
-                Console.WriteLine(item.LastName);
-            }
-        }
+        //private static void UserAddTest(UserManager userManager)
+        //{
+        //    User userAdd = new User
+        //    {
+        //        FirstName = "Hakan",
+        //        LastName = "Girgin",
+        //        Email = "hakangirgin7@gmail.com",
+              
+        //    };
+        //    userManager.Add(userAdd);
+        //    var result = userManager.GelAll();
+        //    foreach (var item in result.Data)
+        //    {
+        //        Console.WriteLine(item.LastName);
+        //    }
+        //}
 
         private static void CarAddedTest(CarManager carManager)
         {
-            Car carAdd = new Car { CarName = "Toyota", BrandId = 1, ColorId = 2, DailyPrice = 300, ModelYear = 2021, Descriptions = "çok güzeldir." };
+            Car carAdd = new Car { CarName = "Toyota", BrandId = 1, ColorId = 2, DailyPrice = 300, ModelYear = 2021, Description = "çok güzeldir." };
             carManager.Add(carAdd);
-            Console.WriteLine(carAdd.CarName + "/" + carAdd.Descriptions);
+            Console.WriteLine(carAdd.CarName + "/" + carAdd.Description);
         }
 
         private static void CarDetailTest(CarManager carManager)

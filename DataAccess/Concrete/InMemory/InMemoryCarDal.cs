@@ -16,11 +16,11 @@ namespace DataAccess.Concrete.InMemory
         {
             _cars = new List<Car>
             {
-                new Car {CarId=1,BrandId=1,ColorId=1,CarName="Nissan Micra",ModelYear=2000,DailyPrice=75,Descriptions="Çok konforlu olmasada iki kişi çok az yakan ucuz bir arabadır."},
-                new Car{CarId=2,BrandId=2,ColorId=2,CarName="Renault Clio",ModelYear=2011,DailyPrice=100,Descriptions="Ucuz, az yakan ve aile için kullanışlı arabadır. "},
-                new Car{CarId=3,BrandId=3,ColorId=3,CarName="Opel Corsa",ModelYear=2015,DailyPrice=125,Descriptions="Küçük ancak konforlu bir arabadır. Yakıt tüketimi ortalamadır."},
-                new Car{CarId=4,BrandId=4,ColorId=4,CarName="BMW",ModelYear=2017,DailyPrice=200,Descriptions="Konforlu ve lüks bir arabadır. Yakıt tüketimi ortalamanın üzerindedir."},
-                new Car{CarId=5,BrandId=5,ColorId=5,CarName="Mercedes",ModelYear=2020,DailyPrice=300,Descriptions="Son teknoloji lüks bir arabadır."}
+                new Car {CarId=1,BrandId=1,ColorId=1,CarName="Nissan Micra",ModelYear=2000,DailyPrice=75,Description="Çok konforlu olmasada iki kişi çok az yakan ucuz bir arabadır."},
+                new Car{CarId=2,BrandId=2,ColorId=2,CarName="Renault Clio",ModelYear=2011,DailyPrice=100,Description="Ucuz, az yakan ve aile için kullanışlı arabadır. "},
+                new Car{CarId=3,BrandId=3,ColorId=3,CarName="Opel Corsa",ModelYear=2015,DailyPrice=125,Description="Küçük ancak konforlu bir arabadır. Yakıt tüketimi ortalamadır."},
+                new Car{CarId=4,BrandId=4,ColorId=4,CarName="BMW",ModelYear=2017,DailyPrice=200,Description="Konforlu ve lüks bir arabadır. Yakıt tüketimi ortalamanın üzerindedir."},
+                new Car{CarId=5,BrandId=5,ColorId=5,CarName="Mercedes",ModelYear=2020,DailyPrice=300,Description="Son teknoloji lüks bir arabadır."}
             };
         }
 
@@ -67,7 +67,7 @@ namespace DataAccess.Concrete.InMemory
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.CarName = car.CarName;
             carToUpdate.DailyPrice = car.DailyPrice;
-            carToUpdate.Descriptions = car.Descriptions;
+            carToUpdate.Description = car.Description;
         }
     }
 }

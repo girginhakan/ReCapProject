@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAPI.Controllers
 {
@@ -50,6 +52,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpGet("getall")]
+        [Authorize(Roles = "Product.List")]
         public IActionResult GetAll()
         {
             var result = _userService.GetAll();
