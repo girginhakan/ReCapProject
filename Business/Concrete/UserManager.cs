@@ -9,6 +9,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.Aspects.Autofac.Caching;
 
 namespace Business.Concrete
 {
@@ -21,6 +22,8 @@ namespace Business.Concrete
             _userDal = userDal;
         }
         [ValidationAspect(typeof(UserValidator))]
+        [CacheRemoveAspect("IUserService.Get")]
+
         public IResult Add(User user)
         {
             _userDal.Add(user);
@@ -52,7 +55,6 @@ namespace Business.Concrete
         {
             return _userDal.GetClaims(user);
         }
-
         public IResult Update(User user)
         {
             _userDal.Update(user);
