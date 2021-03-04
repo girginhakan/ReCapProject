@@ -23,6 +23,7 @@ namespace Business.Concrete
         }
         [ValidationAspect(typeof(UserValidator))]
         [CacheRemoveAspect("IUserService.Get")]
+        
 
         public IResult Add(User user)
         {
