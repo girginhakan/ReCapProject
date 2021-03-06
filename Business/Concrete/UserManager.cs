@@ -39,12 +39,12 @@ namespace Business.Concrete
 
         public IDataResult<List<User>> GetAll()
         {
-            return new SuccesDataResult<List<User>>(_userDal.GetAll(), Messages.UserListed);
+            return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.UserListed);
         }
 
         public IDataResult<User> GetById(int id)
         {
-            return new SuccesDataResult<User>(_userDal.Get(u => u.Id == id));
+            return new SuccessDataResult<User>(_userDal.Get(u => u.Id == id));
         }
 
         public User GetByMail(string email)

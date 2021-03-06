@@ -43,37 +43,37 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }
-            return new SuccesDataResult<List<Car>>(_carDal.GetAll(), Messages.CarListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarListed);
         }
 
         public IDataResult<List<Car>> GetAllByBrandId(int id)
         {
-            return new SuccesDataResult<List<Car>> (_carDal.GetAll(p => p.BrandId == id));
+            return new SuccessDataResult<List<Car>> (_carDal.GetAll(p => p.BrandId == id));
         }
 
         public IDataResult<List<Car>> GetAllByColorId(int id)
         {
-            return new SuccesDataResult<List<Car>>(_carDal.GetAll(p => p.ColorId == id));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ColorId == id));
         }
 
         public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)
         {
-            return new SuccesDataResult<List<Car>>(_carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max));
         }
 
         public IDataResult<Car> GetById(int id)
         {
-            return new SuccesDataResult<Car>(_carDal.Get(p => p.CarId == id));
+            return new SuccessDataResult<Car>(_carDal.Get(p => p.CarId == id));
         }
 
         public IDataResult<List<Car>> GetByModelYear(int year)
         {
-            return new SuccesDataResult<List<Car>>(_carDal.GetAll(p => p.ModelYear==year));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ModelYear==year));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return new SuccesDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
         [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)

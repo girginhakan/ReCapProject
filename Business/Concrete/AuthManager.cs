@@ -26,7 +26,7 @@ namespace Business.Concrete
         {
             var claims = _userService.GetClaims(user);
             var accessToken= _tokenHelper.CreateToken(user, claims);
-            return new SuccesDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
+            return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
         }
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
@@ -42,7 +42,7 @@ namespace Business.Concrete
                 return new ErrorDataResult<User>(Messages.PasswordError);
             }
 
-            return new SuccesDataResult<User>(userToCheck, Messages.SuccessfulLogin);
+            return new SuccessDataResult<User>(userToCheck, Messages.SuccessfulLogin);
         }
 
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
@@ -59,7 +59,7 @@ namespace Business.Concrete
                 Status = true
             };
             _userService.Add(user);
-            return new SuccesDataResult<User>(user, Messages.UserRegistered);
+            return new SuccessDataResult<User>(user, Messages.UserRegistered);
         }
 
         public IResult UserExists(string email)

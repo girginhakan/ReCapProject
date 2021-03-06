@@ -87,3 +87,8 @@ C:\Users\Atum\Documents\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\Ca
 C:\Users\Atum\Documents\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\FluentValidation.dll
 C:\Users\Atum\Documents\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\Atum\Documents\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+C:\Users\Atum\Documents\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.dll
+C:\Users\Atum\Documents\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\Atum\Documents\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\Atum\Documents\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.ObjectPool.dll
+C:\Users\Atum\Documents\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\Microsoft.Net.Http.Headers.dll

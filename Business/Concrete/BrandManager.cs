@@ -35,12 +35,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Brand>> GetAll()
         {
-            return new SuccesDataResult<List<Brand>>(_brandDal.GetAll());
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll());
         }
 
         public IDataResult<Brand> GetById(int id)
         {
-            return new SuccesDataResult<Brand>(_brandDal.Get(p => p.BrandId == id));
+            return new SuccessDataResult<Brand>(_brandDal.Get(p => p.BrandId == id));
         }
 
         [ValidationAspect(typeof(BrandValidator))]

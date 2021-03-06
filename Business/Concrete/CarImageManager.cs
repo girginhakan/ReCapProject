@@ -45,17 +45,17 @@ namespace Business.Concrete
 
         public IDataResult<CarImage> Get(int id)
         {
-            return new SuccesDataResult<CarImage>(_carImageDal.Get(p => p.CarId == id));
+            return new SuccessDataResult<CarImage>(_carImageDal.Get(p => p.CarId == id));
         }
 
         public IDataResult<List<CarImage>> GetAll()
         {
-            return new SuccesDataResult<List<CarImage>>(_carImageDal.GetAll());
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll());
         }
 
         public IDataResult<List<CarImage>> GetImagesByCarId(int id)
         {
-            return new SuccesDataResult<List<CarImage>>(CheckIfCarImageNull(id));
+            return new SuccessDataResult<List<CarImage>>(CheckIfCarImageNull(id));
         }
 
         public IResult Update(IFormFile file, CarImage carImage)
